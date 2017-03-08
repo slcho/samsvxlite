@@ -1,0 +1,10 @@
+site_name: samsVX Lite
+pages:
+    - Home: index.md
+    - Coding:
+        - 'Style': 'style.md'
+    - Tech:
+        - 'PostgreSQL': 'postgresql.md'
+        - 'RabbitMQ': 'rabbitmq.md'
+        - 'WIX Tool': 'wixtool.md'
+theme: readthedocs
