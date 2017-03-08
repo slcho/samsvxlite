@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>PostgreSQL - samsVX Lite</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "PostgreSQL";
+    var mkdocs_page_input_path = "postgresql.md";
+    var mkdocs_page_url = "/postgresql/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> samsVX Lite</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Coding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../style/">Style</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Tech</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">PostgreSQL</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">설치</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#c">C# 에서 연결</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#crud">CRUD 테스트</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#advanced-features">Advanced Features</a></li>
+                
+                    <li><a class="toctree-l4" href="#views">Views</a></li>
+                
+                    <li><a class="toctree-l4" href="#foreign-keys">Foreign Keys</a></li>
+                
+                    <li><a class="toctree-l4" href="#transactions">Transactions</a></li>
+                
+                    <li><a class="toctree-l4" href="#window-functions">Window Functions</a></li>
+                
+                    <li><a class="toctree-l4" href="#inheritance">Inheritance</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#data-type">Data Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#enumerated-types">Enumerated Types</a></li>
+                
+                    <li><a class="toctree-l4" href="#network-address-type">Network Address Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#uuid-type">UUID Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#xml-type">XML Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#json-type">JSON Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#array-type">Array Type</a></li>
+                
+                    <li><a class="toctree-l4" href="#composite-types">Composite Types</a></li>
+                
+                    <li><a class="toctree-l4" href="#range-types">Range Types</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#indexes">Indexes</a></li>
+                
+                    <li><a class="toctree-l4" href="#single-column-indexes">Single-Column Indexes</a></li>
+                
+                    <li><a class="toctree-l4" href="#multicolumn-indexes">Multicolumn Indexes</a></li>
+                
+                    <li><a class="toctree-l4" href="#unique-indexes">Unique Indexes</a></li>
+                
+                    <li><a class="toctree-l4" href="#partial-indexes">Partial Indexes</a></li>
+                
+                    <li><a class="toctree-l4" href="#drop-index">Drop Index</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">인덱스를 사용하지 말아야 할 경우</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#concurrency-control">Concurrency Control</a></li>
+                
+                    <li><a class="toctree-l4" href="#_3">트랜잭션 격리</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rabbitmq/">RabbitMQ</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../wixtool/">WIX Tool</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">samsVX Lite</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tech &raquo;</li>
+        
+      
+    
+    <li>PostgreSQL</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">설치</h1>
+<ul>
+<li>bat 파일 만들어서 설치</li>
+</ul>
+<pre><code>C:\Users\Administrator\Downloads\postgresql-9.6.2-2-windows.exe  --serverport 5432 --servicename postgres_service --locale C --superaccount admin --superpassword shpa$$w0rd12 --unattendedmodeui minimal --debuglevel 2 --mode unattended
+</code></pre>
+
+<ul>
+<li>외부 접속 허용 설정
+pg_hba.conf 파일에 아래 내용 추가</li>
+</ul>
+<pre><code>host    all             all             192.168.1.0/24            md5
+</code></pre>
+
+<ul>
+<li>
+<p>방화벽에서 TCP port 5432 허용</p>
+</li>
+<li>
+<p>SSL 설정</p>
+</li>
+<li>
+<p>Database 및 Table 생성 스크립트 실행</p>
+</li>
+<li>
+<p>samsVX Lite 서버에서 접속할 사용자 생성 및 설정</p>
+</li>
+</ul>
+<p><strong>위 항목들을 설치 시 자동화 할 수 있는 방법 필요</strong></p>
+<p><br/></p>
+<h1 id="c">C# 에서 연결</h1>
+<ul>
+<li>Nuget에서 Npgsql 설치</li>
+</ul>
+<pre><code class="cs">using Npgsql;
+</code></pre>
+
+<ul>
+<li>연결</li>
+</ul>
+<pre><code class="cs">using (var conn = new NpgsqlConnection(&quot;Host=192.168.10.158;Username=admin;Password=shpa$$w0rd12;Database=testdb&quot;))
+{
+  conn.Open();
+}
+</code></pre>
+
+<p><br/></p>
+<h1 id="crud">CRUD 테스트</h1>
+<ul>
+<li>SELECT</li>
+</ul>
+<pre><code class="cs">using (var conn = new NpgsqlConnection(&quot;Host=192.168.10.158;Username=admin;Password=shpa$$w0rd12;Database=testdb&quot;))
+{
+    conn.Open();
+    using (var cmd = new NpgsqlCommand())
+    {
+        cmd.Connection = conn;
+
+        cmd.CommandText = &quot;SELECT * FROM addresses&quot;;
+
+        using (var reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                var data = new string[] { reader[&quot;id&quot;].ToString(),
+                    reader[&quot;name&quot;].ToString()};
+
+                foreach (var x in data)
+                {
+                    Console.Write(x);
+                    Console.Write(&quot; -- &quot;);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li>INSERT</li>
+</ul>
+<pre><code class="cs">using (var conn = new NpgsqlConnection(&quot;Host=192.168.10.158;Username=admin;Password=shpa$$w0rd12;Database=testdb&quot;))
+{
+    conn.Open();
+    using (var cmd = new NpgsqlCommand())
+    {
+        cmd.Connection = conn;
+
+        cmd.CommandText = &quot;INSERT INTO addresses VALUES(@id, @name)&quot;;
+
+        cmd.Parameters.AddWithValue(&quot;@id&quot;, 3);
+        cmd.Parameters.AddWithValue(&quot;@name&quot;, &quot;tester&quot;);
+
+        cmd.ExecuteNonQuery();
+    }
+}
+
+</code></pre>
+
+<ul>
+<li>UPDATE</li>
+</ul>
+<pre><code class="cs">using (var conn = new NpgsqlConnection(&quot;Host=192.168.10.158;Username=admin;Password=shpa$$w0rd12;Database=testdb&quot;))
+{
+    conn.Open();
+    using (var cmd = new NpgsqlCommand())
+    {
+        cmd.Connection = conn;
+
+        cmd.CommandText = &quot;UPDATE addresses SET name = @name WHERE id = @id&quot;;
+
+        cmd.Parameters.AddWithValue(&quot;@name&quot;, &quot;Steve&quot;);
+        cmd.Parameters.AddWithValue(&quot;@id&quot;, 3);
+
+        cmd.ExecuteNonQuery();
+    }
+}
+</code></pre>
+
+<ul>
+<li>DELETE</li>
+</ul>
+<pre><code class="cs">using (var conn = new NpgsqlConnection(&quot;Host=192.168.10.158;Username=admin;Password=shpa$$w0rd12;Database=testdb&quot;))
+{
+    conn.Open();
+    using (var cmd = new NpgsqlCommand())
+    {
+        cmd.Connection = conn;
+
+        cmd.CommandText = &quot;DELETE FROM addresses WHERE id = @id&quot;;
+
+        cmd.Parameters.AddWithValue(&quot;@id&quot;, 3);
+
+        cmd.ExecuteNonQuery();
+    }
+}
+</code></pre>
+
+<p><br/></p>
+<h1 id="advanced-features">Advanced Features</h1>
+<h2 id="views">Views</h2>
+<p>별 특징 없음</p>
+<pre><code class="sql">CREATE VIEW myview AS
+SELECT city, temp_lo, temp_hi, prcp, date, location
+FROM weather, cities
+WHERE city = name;
+SELECT * FROM myview;
+</code></pre>
+
+<p><br/></p>
+<h2 id="foreign-keys">Foreign Keys</h2>
+<p>지정된 컬럼이 테이블을 참조할때, 그 값이 테이블에 존재할때만 사용한다는 제약 조건</p>
+<p>아래와 같이 두 개의 테이블이 있을 때</p>
+<pre><code class="sql">CREATE TABLE cities (
+city varchar(80) primary key,
+location point
+);
+
+CREATE TABLE weather (
+city varchar(80) references cities(city),
+temp_lo int,
+temp_hi int,
+prcp real,
+date date
+);
+</code></pre>
+
+<p>다음과 같이 레코드 삽입을 시도 하면 에러가 발생</p>
+<pre><code class="sql">INSERT INTO weather VALUES (’Berkeley’, 45, 53, 0.0, ’1994-11-28’);
+</code></pre>
+
+<pre><code>ERROR: insert or update on table &quot;weather&quot; violates foreign key constraint &quot;weather_city_fkey&quot;
+DETAIL: Key (city)=(Berkeley) is not present in table &quot;cities&quot;.
+</code></pre>
+
+<p><br/></p>
+<h2 id="transactions">Transactions</h2>
+<p>완벽하게 모든 단계가 완료 되었거나, 전혀 발생하지 않아거나</p>
+<pre><code class="sql">BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+WHERE name = ’Alice’;
+-- etc etc
+COMMIT;
+</code></pre>
+
+<p>PostgreSQL은 실제로 모든 SQL 문이 트랜잭션 내에서 실행되는 것으로 취급된다.
+Begin 명령이 없을 경우 각각의 개별 문구는 앞뒤에 암시적으로 BEGIN 및 COMMIT 문을 갖는다.</p>
+<p>SAVEPOINT를 사용하여 저장지점을 정의 한 후, ROLLBACK TO 지점까지 롤백 할 수 있다.</p>
+<pre><code class="sql">BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+WHERE name = ’Alice’;
+SAVEPOINT my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+WHERE name = ’Bob’;
+-- oops ... forget that and use Wally’s account
+ROLLBACK TO my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+WHERE name = ’Wally’;
+COMMIT;
+</code></pre>
+
+<p><br/></p>
+<h2 id="window-functions">Window Functions</h2>
+<p>테이블에서 행 집합을 대상으로 계산하는 함수</p>
+<p>다음 예제는 각 부서별 평균 임금과 각 직원별 급여를 비교하는 것이다.</p>
+<pre><code class="sql">SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>depname</th>
+<th>empno</th>
+<th>salary</th>
+<th>avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>develop</td>
+<td>11</td>
+<td>5200</td>
+<td>5020.0000000000000000</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>7</td>
+<td>4200</td>
+<td>5020.0000000000000000</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>9</td>
+<td>4500</td>
+<td>5020.0000000000000000</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>8</td>
+<td>6000</td>
+<td>5020.0000000000000000</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>10</td>
+<td>5200</td>
+<td>5020.0000000000000000</td>
+</tr>
+<tr>
+<td>personnel</td>
+<td>5</td>
+<td>3500</td>
+<td>3700.0000000000000000</td>
+</tr>
+<tr>
+<td>personnel</td>
+<td>2</td>
+<td>3900</td>
+<td>3700.0000000000000000</td>
+</tr>
+<tr>
+<td>sales</td>
+<td>3</td>
+<td>4800</td>
+<td>4866.6666666666666667</td>
+</tr>
+<tr>
+<td>sales</td>
+<td>1</td>
+<td>5000</td>
+<td>4866.6666666666666667</td>
+</tr>
+<tr>
+<td>sales</td>
+<td>4</td>
+<td>4800</td>
+<td>4866.6666666666666667</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h2 id="inheritance">Inheritance</h2>
+<p>테이블 상속 개념 제공</p>
+<p>cities (도시) 테이블과 capitals (수도) 테이블 두개가 있을때, 전통적인 개념의 자료 구조</p>
+<pre><code class="sql">CREATE TABLE capitals (
+  name       text,
+  population real,
+  altitude   int,    -- (in ft)
+  state      char(2)
+);
+
+CREATE TABLE non_capitals (
+  name       text,
+  population real,
+  altitude   int     -- (in ft)
+);
+
+CREATE VIEW cities AS
+  SELECT name, population, altitude FROM capitals
+    UNION
+  SELECT name, population, altitude FROM non_capitals;
+</code></pre>
+
+<p><br/>
+상속 개념으로 변환 하면</p>
+<pre><code class="sql">CREATE TABLE cities (
+  name       text,
+  population real,
+  altitude   int     -- (in ft)
+);
+
+CREATE TABLE capitals (
+  state      char(2)
+) INHERITS (cities);
+</code></pre>
+
+<p>inherits 예약어를 사용함으로써, cities 테이블의 모든 컬럼을 상속 받음. 또한 테이블의 자료 조회는 하위 테이블의 모든 자료를 포함해서 조회 한다.</p>
+<p>예를 들어, 고도가 500 ft. 보다 큰 도시들을 모두 찾을 때, 물론 이때 수도도 포함하고자 할 때는 다음과 같은 쿼리를 이용.</p>
+<pre><code class="sql">SELECT name, altitude
+  FROM cities
+  WHERE altitude &gt; 500;
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>altitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Las Vegas</td>
+<td>2174</td>
+</tr>
+<tr>
+<td>Mariposa</td>
+<td>1953</td>
+</tr>
+<tr>
+<td>Madison</td>
+<td>845</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+수도를 빼고 검색하려면 다음과 같이 ONLY 예약어 사용</p>
+<pre><code class="sql">SELECT name, altitude
+    FROM ONLY cities
+    WHERE altitude &gt; 500;
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>altitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Las Vegas</td>
+<td>2174</td>
+</tr>
+<tr>
+<td>Mariposa</td>
+<td>1953</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h1 id="data-type">Data Type</h1>
+<p>integer, char, date 형은 다른 DBMS와 대체적으로 비슷</p>
+<p><br/></p>
+<h3 id="enumerated-types">Enumerated Types</h3>
+<p>Enum 타입은 CREATE TYPE 명령을 사용해서 생성 된다.</p>
+<pre><code class="sql">CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+</code></pre>
+
+<p><br/>
+한번 생성되면, 다른 타입처럼 사용 가능</p>
+<pre><code class="sql">CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+CREATE TABLE person (
+    name text,
+    current_mood mood
+);
+INSERT INTO person VALUES ('Moe', 'happy');
+SELECT * FROM person WHERE current_mood = 'happy';
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>current_mood</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moe</td>
+<td>happy</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h3 id="network-address-type">Network Address Type</h3>
+<p>IPv4, IPv6, Mac 주소 전용 타입 지원</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Storage Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cidr</td>
+<td>7 or 19 bytes</td>
+<td>IPv4 and IPv6 networks</td>
+</tr>
+<tr>
+<td>inet</td>
+<td>7 or 19 bytes</td>
+<td>IPv4 and IPv6 hosts and networks</td>
+</tr>
+<tr>
+<td>macaddr</td>
+<td>6 bytes</td>
+<td>MAC addresses</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<h3 id="uuid-type">UUID Type</h3>
+<p>8자리-4자리-4자리-4자리-12자리, 총 32자리의 16진수로 이루어진다. (128비트)</p>
+<pre><code>550e8400-e29b-41d4-a716-446655440000
+</code></pre>
+
+<p><br/></p>
+<h3 id="xml-type">XML Type</h3>
+<p>xmlparse 함수를 이용하여 xml 데이터를 생성</p>
+<pre><code class="xml">XMLPARSE (DOCUMENT '&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;tutorial&gt;
+&lt;title&gt;PostgreSQL Tutorial &lt;/title&gt;
+   &lt;topics&gt;...&lt;/topics&gt;
+&lt;/tutorial&gt;')
+
+XMLPARSE (CONTENT 'xyz&lt;foo&gt;bar&lt;/foo&gt;&lt;bar&gt;foo&lt;/bar&gt;')
+</code></pre>
+
+<p><br/></p>
+<h3 id="json-type">JSON Type</h3>
+<p>JSON 타입은 저장된 값이 JSON 타입에 유효한지 확인 한다.
+다음은 JSON Data Type에 유용한 함수이다.
+Example | Example Result
+--------- | -----------
+array_to_json('{{1,5},{99,100}}'::int[])    | [[1,5],[99,100]]
+row_to_json(row(1,'foo'))   | {"f1":1,"f2":"foo"}</p>
+<p><br/></p>
+<h3 id="array-type">Array Type</h3>
+<p>배열에는 기본, 열거, 사용자 정의 타입등 대부분 타입을 지정할 수 있다.</p>
+<p><strong>배열 선언</strong></p>
+<pre><code class="sql">CREATE TABLE monthly_savings (
+   name text,
+   saving_per_quarter integer[],
+   scheme text[][]
+);
+</code></pre>
+
+<p>다음과 같이 "ARRAY" 키워드를 사용할 수도 있다.</p>
+<pre><code class="sql">CREATE TABLE monthly_savings (
+   name text,
+   saving_per_quarter integer ARRAY[4],
+   scheme text[][]
+);
+</code></pre>
+
+<p><br/>
+<strong>Insert 배열</strong></p>
+<pre><code class="sql">INSERT INTO monthly_savings
+VALUES ('Manisha',
+'{20000, 14600, 23500, 13250}',
+'{{&quot;FD&quot;, &quot;MF&quot;}, {&quot;FD&quot;, &quot;Property&quot;}}');
+</code></pre>
+
+<p><br/>
+<strong>Select 배열</strong></p>
+<pre><code class="sql">SELECT name FROM monhly_savings WHERE saving_per_quarter[2] &gt; saving_per_quarter[4];
+</code></pre>
+
+<p><br/>
+<strong>Update 배열</strong></p>
+<pre><code class="sql">UPDATE monthly_savings SET saving_per_quarter = '{25000,25000,27000,27000}'
+WHERE name = 'Manisha';
+
+또는
+
+UPDATE monthly_savings SET saving_per_quarter = ARRAY[25000,25000,27000,27000]
+WHERE name = 'Manisha';
+</code></pre>
+
+<p><br/>
+<strong>Where 배열</strong></p>
+<pre><code class="sql">SELECT * FROM monthly_savings WHERE saving_per_quarter[1] = 10000 OR
+saving_per_quarter[2] = 10000 OR
+saving_per_quarter[3] = 10000 OR
+saving_per_quarter[4] = 10000;
+</code></pre>
+
+<p>배열 사이즈를 모를땐 다음과 같이 사용</p>
+<pre><code class="sql">SELECT * FROM monthly_savings WHERE 10000 = ANY (saving_per_quarter);
+</code></pre>
+
+<p><br/></p>
+<h3 id="composite-types">Composite Types</h3>
+<p><strong>컴포지트 타입 선언</strong></p>
+<pre><code class="sql">CREATE TYPE inventory_item AS (
+   name text,
+   supplier_id integer,
+   price numeric
+);
+</code></pre>
+
+<pre><code class="sql">CREATE TABLE on_hand (
+   item inventory_item,
+   count integer
+);
+</code></pre>
+
+<p><br/>
+<strong>Insert 컴포지트 타입</strong></p>
+<pre><code class="sql">INSERT INTO on_hand VALUES (ROW('fuzzy dice', 42, 1.99), 1000);
+</code></pre>
+
+<p><br/>
+<strong>Select 컴포지트 타입</strong></p>
+<pre><code class="sql">SELECT (item).name FROM on_hand WHERE (item).price &gt; 9.99;
+</code></pre>
+
+<pre><code class="sql">SELECT (on_hand.item).name FROM on_hand WHERE (on_hand.item).price &gt; 9.99;
+</code></pre>
+
+<p><br/></p>
+<h3 id="range-types">Range Types</h3>
+<p>범위를 값으로 가지는 타입</p>
+<ul>
+<li>int4range - Range of integer</li>
+<li>int8range - Range of bigint</li>
+<li>Range of numeric</li>
+<li>Range of timestamp without time zone</li>
+<li>tstzrange - Range of timestamp with time zone</li>
+<li>daterange - Range of date</li>
+</ul>
+<p><br/></p>
+<h1 id="indexes">Indexes</h1>
+<p>인덱스 생성</p>
+<pre><code class="sql">CREATE INDEX index_name ON table_name;
+</code></pre>
+
+<p>PostgreSQL은 몇가지 인덱스 타입들을 지원한다.(B-tree, Hash, GiST, SP-GiST, GIN)</p>
+<p>CREATE INDEX 명령은 기본으로 B-tree 인덱스로 생성</p>
+<p><br/></p>
+<h3 id="single-column-indexes">Single-Column Indexes</h3>
+<pre><code class="sql">CREATE INDEX index_name
+ON table_name (column_name);
+</code></pre>
+
+<p><br/></p>
+<h3 id="multicolumn-indexes">Multicolumn Indexes</h3>
+<pre><code class="sql">CREATE INDEX index_name
+ON table_name (column1_name, column2_name);
+</code></pre>
+
+<p><br/></p>
+<h3 id="unique-indexes">Unique Indexes</h3>
+<p>Unique 인덱스는 성능 뿐만 아니라 데이터 무결성을 위해서 사용 된다. Unique 인덱스는 중복 값 Insert를 허용하지 않는다.</p>
+<pre><code class="sql">CREATE UNIQUE INDEX index_name
+on table_name (column_name);
+</code></pre>
+
+<p><br/></p>
+<h3 id="partial-indexes">Partial Indexes</h3>
+<p>테이블의 일부분만을 대상으로 생성된 인덱스. 일부분이라는 것은 조건문에 의해서 정의 된다.</p>
+<pre><code class="sql">CREATE INDEX index_name
+on table_name (conditional_expression);
+</code></pre>
+
+<p><br/></p>
+<h3 id="drop-index">Drop Index</h3>
+<pre><code class="sql">DROP INDEX index_name;
+</code></pre>
+
+<p><br/></p>
+<h3 id="_2">인덱스를 사용하지 말아야 할 경우</h3>
+<ul>
+<li>테이블 크기가 작을 때</li>
+<li>테이블이 잦은 주기로, 그리고 많은 batch Update 또는 Insert 명령이 실행 될 때</li>
+<li>컬럼이 Null 인 경우가 대부분일 때</li>
+<li>컬럼의 값이 자주 변경 될 때</li>
+</ul>
+<p><br/></p>
+<h1 id="concurrency-control">Concurrency Control</h1>
+<p>내부적으로, 데이터 일관성은 MVCC(Multiversion Concurrency Control)을 사용하여 유지 된다. 즉, 데이터베이스를 쿼리하는 동안 각 트랜잭션은 기본 데이터의 현재 상태와 관계없이 이전 데이터의 스냅 샷을 볼 수 있다. MVCC는 전통적인 데이터베이스 시스템의 잠금 방법론을 피함으로써, 잠금 경합을 최소화한다.</p>
+<p>MVCC가 잠금모델과 비교하여 가장 큰 이점은, 읽기 블럭과 쓰기 블럭이 충돌하지 않는다는 점이다.</p>
+<p>PostgreSQL은 테이블 및 행 수준의 잠금 기능을 사용할 수 있다.</p>
+<p><br/></p>
+<h3 id="_3">트랜잭션 격리</h3>
+<p>트랜잭션 4가지 격리 수준</p>
+<table>
+<thead>
+<tr>
+<th>Isolation Level</th>
+<th>Dirty Read</th>
+<th>Nonrepeatable Read</th>
+<th>Phantom Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read uncommitted</td>
+<td>Possible</td>
+<td>Possible</td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Read committed</td>
+<td>Not possible</td>
+<td>Possible</td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Repeatable read</td>
+<td>Not possible</td>
+<td>Not possible</td>
+<td>Possible</td>
+</tr>
+<tr>
+<td>Serializable</td>
+<td>Not possible</td>
+<td>Not possible</td>
+<td>Not possible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>dirty read</strong> : 커밋 되지 않은 트랜잭션이 수정한 데이터를 다른 트랜잭션이 읽는다.</p>
+<p><strong>nonrepeatable read</strong> : 한 트랜잭션 내에서 같은 쿼리를 두번 수행 할 때 그 사이에 다른 트랜잭션이 값을 수정 또는 삭제함으로써 두 쿼리의 결과가 상이하게 나타나는 비일관성이 발생하는 것을 말함</p>
+<p><strong>phantom read</strong> : 한 트랜잭션 안에서 일정 범위의 레코드를 두번 이상 읽을 때, 첫번째 쿼리에서 없던 레코드가 두번째 쿼리에서 나타나는 현상. 이는 트랜잭션 도중 새로운 레코드가 삽입되는 것을 허용하기 때문에 나타나는 현상임.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rabbitmq/" class="btn btn-neutral float-right" title="RabbitMQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../style/" class="btn btn-neutral" title="Style"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../style/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../rabbitmq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

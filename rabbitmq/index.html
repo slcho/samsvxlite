@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>RabbitMQ - samsVX Lite</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "RabbitMQ";
+    var mkdocs_page_input_path = "rabbitmq.md";
+    var mkdocs_page_url = "/rabbitmq/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> samsVX Lite</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Coding</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../style/">Style</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Tech</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../postgresql/">PostgreSQL</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">RabbitMQ</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#rabbitmq">RabbitMQ</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_1">설치</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_2">기본 정보</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#exchange-type">Exchange Type</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#hello-world">Hello World</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../wixtool/">WIX Tool</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">samsVX Lite</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tech &raquo;</li>
+        
+      
+    
+    <li>RabbitMQ</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="rabbitmq">RabbitMQ</h1>
+<p>RabbitMQ는 메시지 브로커 중의 하나이며, AMQP(Advanced Message Queuing Protocol)을 사용한다.</p>
+<hr />
+<p><br/></p>
+<h1 id="_1">설치</h1>
+<ol>
+<li>
+<p><a href="http://www.erlang.org/download.html">ERLANG</a> 설치. OS 환경에 맞는 설치 파일을 사용 한다.</p>
+</li>
+<li>
+<p>ERLANG 환경 변수 등록</p>
+<ul>
+<li>
+<p>변수 이름 : ERLANG_HOME</p>
+</li>
+<li>
+<p>경로 : ERLANG이 설치된 경로(ex. C:\Program Files\erl7.0)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.rabbitmq.com/install-windows.html">RabbitMQ</a> 설치</p>
+</li>
+<li>
+<p>RabbitMQ Management Plugin 설치</p>
+<ol>
+<li>
+<p>cmd를 이용하여 RabbitMQ가 설치된 경로의 sbin 폴더로 이동</p>
+<ul>
+<li>Ex) cd C:\Program Files (x86)\RabbitMQ Server\rabbitmq_server-3.5.4\sbin</li>
+</ul>
+</li>
+<li>
+<p>rabbitmq-plugins.bat enable rabbitmq_management 입력</p>
+</li>
+<li>
+<p>rabbitmq server 재 시작</p>
+</li>
+<li>
+<p>인터넷 브라우저 주소창에 http://localhost:15672/ 로 접속</p>
+<ul>
+<li>ID : guest</li>
+<li>Pass : guest</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<hr />
+<p><br/></p>
+<h1 id="_2">기본 정보</h1>
+<p>RabbitMQ 용어 정리</p>
+<ul>
+<li>
+<p><strong>Producer :</strong> 메시지를 보내는 주체</p>
+</li>
+<li>
+<p><strong>Consumer :</strong> Producer가 보내는 메시지를 받는 주체</p>
+</li>
+<li>
+<p><strong>Exchange :</strong> Produer가 보내는 메시지를 Queue로 전달해 주는 역할을 수행. 어떤 Type의 Exchange를 사용하는지에 따라 특정 대상의 Queue 혹은 다수의 Queue에 메시지를 전달할지 결정한다.</p>
+</li>
+</ul>
+<hr />
+<p><br/></p>
+<h1 id="exchange-type">Exchange Type</h1>
+<ul>
+<li><strong>Direct Exchange :</strong> 같은 Routing Key를 가지고 있는 큐에 메시지를 전달.</li>
+</ul>
+<p><img alt="Direct Exchage" src="../../image/rabbitmq/Direct_Exchange.png" /></p>
+<ul>
+<li><strong>Fanout Exchange :</strong> Exchange에 바인딩된 모든 큐에 메시지 전달.</li>
+</ul>
+<p><img alt="Fanout Exchage" src="../../image/rabbitmq/Fanout_Exchange.png" /></p>
+<ul>
+<li><strong>Topic Exchange :</strong> Routing Key가 일치하는 큐메 메시지 전달.  '*'. '#'을 이용해 Routing Key를 작성 한다.</li>
+</ul>
+<p><img alt="Topic Exchage" src="../../image/rabbitmq/Topic_Exchange.png" /></p>
+<ul>
+<li><strong>Header Exchange :</strong> Header와 일치하는 큐에 메시지를 전달</li>
+</ul>
+<p><img alt="Topic Exchage" src="../../image/rabbitmq/Header_Exchange.png" /></p>
+<hr />
+<p><br/></p>
+<h1 id="hello-world">Hello World</h1>
+<ul>
+<li>"Hello World" Message 전송</li>
+</ul>
+<pre><code>using System;
+using RabbitMQ.Client;
+using System.Text;
+
+class Send
+{
+    public static void Main()
+    {
+        var factory = new ConnectionFactory() { HostName = &quot;localhost&quot; };
+        using(var connection = factory.CreateConnection())
+        using(var channel = connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: &quot;hello&quot;,
+                                 durable: false,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+
+            string message = &quot;Hello World!&quot;;
+            var body = Encoding.UTF8.GetBytes(message);
+
+            channel.BasicPublish(exchange: &quot;&quot;,
+                                 routingKey: &quot;hello&quot;,
+                                 basicProperties: null,
+                                 body: body);
+            Console.WriteLine(&quot; [x] Sent {0}&quot;, message);
+        }
+
+        Console.WriteLine(&quot; Press [enter] to exit.&quot;);
+        Console.ReadLine();
+    }
+}
+</code></pre>
+
+<ul>
+<li>Message 수신</li>
+</ul>
+<pre><code>using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System;
+using System.Text;
+
+class Receive
+{
+    public static void Main()
+    {
+        var factory = new ConnectionFactory() { HostName = &quot;localhost&quot; };
+        using(var connection = factory.CreateConnection())
+        using(var channel = connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: &quot;hello&quot;,
+                                 durable: false,
+                                 exclusive: false,
+                                 autoDelete: false,
+                                 arguments: null);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += (model, ea) =&gt;
+            {
+                var body = ea.Body;
+                var message = Encoding.UTF8.GetString(body);
+                Console.WriteLine(&quot; [x] Received {0}&quot;, message);
+            };
+            channel.BasicConsume(queue: &quot;hello&quot;,
+                                 noAck: true,
+                                 consumer: consumer);
+
+            Console.WriteLine(&quot; Press [enter] to exit.&quot;);
+            Console.ReadLine();
+        }
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../wixtool/" class="btn btn-neutral float-right" title="WIX Tool">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../postgresql/" class="btn btn-neutral" title="PostgreSQL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../postgresql/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../wixtool/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
