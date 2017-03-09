@@ -140,6 +140,11 @@
                     <li><a class="toctree-l4" href="#_3">트랜잭션 격리</a></li>
                 
             
+                <li class="toctree-l3"><a href="#orm">ORM</a></li>
+                
+                    <li><a class="toctree-l4" href="#entity-framework-tutorial">Entity Framework Tutorial</a></li>
+                
+            
             </ul>
         
     </li>
@@ -199,6 +204,7 @@
             <div class="section">
               
                 <h1 id="_1">설치</h1>
+<hr />
 <ul>
 <li>bat 파일 만들어서 설치</li>
 </ul>
@@ -229,6 +235,7 @@ pg_hba.conf 파일에 아래 내용 추가</li>
 <p><strong>위 항목들을 설치 시 자동화 할 수 있는 방법 필요</strong></p>
 <p><br/></p>
 <h1 id="c">C# 에서 연결</h1>
+<hr />
 <ul>
 <li>Nuget에서 Npgsql 설치</li>
 </ul>
@@ -246,6 +253,7 @@ pg_hba.conf 파일에 아래 내용 추가</li>
 
 <p><br/></p>
 <h1 id="crud">CRUD 테스트</h1>
+<hr />
 <ul>
 <li>SELECT</li>
 </ul>
@@ -339,6 +347,7 @@ pg_hba.conf 파일에 아래 내용 추가</li>
 
 <p><br/></p>
 <h1 id="advanced-features">Advanced Features</h1>
+<hr />
 <h2 id="views">Views</h2>
 <p>별 특징 없음</p>
 <pre><code class="sql">CREATE VIEW myview AS
@@ -571,9 +580,10 @@ CREATE TABLE capitals (
 </table>
 <p><br/></p>
 <h1 id="data-type">Data Type</h1>
+<hr />
 <p>integer, char, date 형은 다른 DBMS와 대체적으로 비슷</p>
 <p><br/></p>
-<h3 id="enumerated-types">Enumerated Types</h3>
+<h2 id="enumerated-types">Enumerated Types</h2>
 <p>Enum 타입은 CREATE TYPE 명령을 사용해서 생성 된다.</p>
 <pre><code class="sql">CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
 </code></pre>
@@ -604,7 +614,7 @@ SELECT * FROM person WHERE current_mood = 'happy';
 </tbody>
 </table>
 <p><br/></p>
-<h3 id="network-address-type">Network Address Type</h3>
+<h2 id="network-address-type">Network Address Type</h2>
 <p>IPv4, IPv6, Mac 주소 전용 타입 지원</p>
 <table>
 <thead>
@@ -633,13 +643,13 @@ SELECT * FROM person WHERE current_mood = 'happy';
 </tbody>
 </table>
 <p><br/></p>
-<h3 id="uuid-type">UUID Type</h3>
+<h2 id="uuid-type">UUID Type</h2>
 <p>8자리-4자리-4자리-4자리-12자리, 총 32자리의 16진수로 이루어진다. (128비트)</p>
 <pre><code>550e8400-e29b-41d4-a716-446655440000
 </code></pre>
 
 <p><br/></p>
-<h3 id="xml-type">XML Type</h3>
+<h2 id="xml-type">XML Type</h2>
 <p>xmlparse 함수를 이용하여 xml 데이터를 생성</p>
 <pre><code class="xml">XMLPARSE (DOCUMENT '&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;tutorial&gt;
@@ -651,15 +661,29 @@ XMLPARSE (CONTENT 'xyz&lt;foo&gt;bar&lt;/foo&gt;&lt;bar&gt;foo&lt;/bar&gt;')
 </code></pre>
 
 <p><br/></p>
-<h3 id="json-type">JSON Type</h3>
+<h2 id="json-type">JSON Type</h2>
 <p>JSON 타입은 저장된 값이 JSON 타입에 유효한지 확인 한다.
-다음은 JSON Data Type에 유용한 함수이다.
-Example | Example Result
---------- | -----------
-array_to_json('{{1,5},{99,100}}'::int[])    | [[1,5],[99,100]]
-row_to_json(row(1,'foo'))   | {"f1":1,"f2":"foo"}</p>
+다음은 JSON Data Type에 유용한 함수이다.</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Example Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array_to_json('{{1,5},{99,100}}'::int[])</td>
+<td>[[1,5],[99,100]]</td>
+</tr>
+<tr>
+<td>row_to_json(row(1,'foo'))</td>
+<td>{"f1":1,"f2":"foo"}</td>
+</tr>
+</tbody>
+</table>
 <p><br/></p>
-<h3 id="array-type">Array Type</h3>
+<h2 id="array-type">Array Type</h2>
 <p>배열에는 기본, 열거, 사용자 정의 타입등 대부분 타입을 지정할 수 있다.</p>
 <p><strong>배열 선언</strong></p>
 <pre><code class="sql">CREATE TABLE monthly_savings (
@@ -714,7 +738,7 @@ saving_per_quarter[4] = 10000;
 </code></pre>
 
 <p><br/></p>
-<h3 id="composite-types">Composite Types</h3>
+<h2 id="composite-types">Composite Types</h2>
 <p><strong>컴포지트 타입 선언</strong></p>
 <pre><code class="sql">CREATE TYPE inventory_item AS (
    name text,
@@ -743,7 +767,7 @@ saving_per_quarter[4] = 10000;
 </code></pre>
 
 <p><br/></p>
-<h3 id="range-types">Range Types</h3>
+<h2 id="range-types">Range Types</h2>
 <p>범위를 값으로 가지는 타입</p>
 <ul>
 <li>int4range - Range of integer</li>
@@ -755,6 +779,7 @@ saving_per_quarter[4] = 10000;
 </ul>
 <p><br/></p>
 <h1 id="indexes">Indexes</h1>
+<hr />
 <p>인덱스 생성</p>
 <pre><code class="sql">CREATE INDEX index_name ON table_name;
 </code></pre>
@@ -762,38 +787,38 @@ saving_per_quarter[4] = 10000;
 <p>PostgreSQL은 몇가지 인덱스 타입들을 지원한다.(B-tree, Hash, GiST, SP-GiST, GIN)</p>
 <p>CREATE INDEX 명령은 기본으로 B-tree 인덱스로 생성</p>
 <p><br/></p>
-<h3 id="single-column-indexes">Single-Column Indexes</h3>
+<h2 id="single-column-indexes">Single-Column Indexes</h2>
 <pre><code class="sql">CREATE INDEX index_name
 ON table_name (column_name);
 </code></pre>
 
 <p><br/></p>
-<h3 id="multicolumn-indexes">Multicolumn Indexes</h3>
+<h2 id="multicolumn-indexes">Multicolumn Indexes</h2>
 <pre><code class="sql">CREATE INDEX index_name
 ON table_name (column1_name, column2_name);
 </code></pre>
 
 <p><br/></p>
-<h3 id="unique-indexes">Unique Indexes</h3>
+<h2 id="unique-indexes">Unique Indexes</h2>
 <p>Unique 인덱스는 성능 뿐만 아니라 데이터 무결성을 위해서 사용 된다. Unique 인덱스는 중복 값 Insert를 허용하지 않는다.</p>
 <pre><code class="sql">CREATE UNIQUE INDEX index_name
 on table_name (column_name);
 </code></pre>
 
 <p><br/></p>
-<h3 id="partial-indexes">Partial Indexes</h3>
+<h2 id="partial-indexes">Partial Indexes</h2>
 <p>테이블의 일부분만을 대상으로 생성된 인덱스. 일부분이라는 것은 조건문에 의해서 정의 된다.</p>
 <pre><code class="sql">CREATE INDEX index_name
 on table_name (conditional_expression);
 </code></pre>
 
 <p><br/></p>
-<h3 id="drop-index">Drop Index</h3>
+<h2 id="drop-index">Drop Index</h2>
 <pre><code class="sql">DROP INDEX index_name;
 </code></pre>
 
 <p><br/></p>
-<h3 id="_2">인덱스를 사용하지 말아야 할 경우</h3>
+<h2 id="_2">인덱스를 사용하지 말아야 할 경우</h2>
 <ul>
 <li>테이블 크기가 작을 때</li>
 <li>테이블이 잦은 주기로, 그리고 많은 batch Update 또는 Insert 명령이 실행 될 때</li>
@@ -802,11 +827,12 @@ on table_name (conditional_expression);
 </ul>
 <p><br/></p>
 <h1 id="concurrency-control">Concurrency Control</h1>
+<hr />
 <p>내부적으로, 데이터 일관성은 MVCC(Multiversion Concurrency Control)을 사용하여 유지 된다. 즉, 데이터베이스를 쿼리하는 동안 각 트랜잭션은 기본 데이터의 현재 상태와 관계없이 이전 데이터의 스냅 샷을 볼 수 있다. MVCC는 전통적인 데이터베이스 시스템의 잠금 방법론을 피함으로써, 잠금 경합을 최소화한다.</p>
 <p>MVCC가 잠금모델과 비교하여 가장 큰 이점은, 읽기 블럭과 쓰기 블럭이 충돌하지 않는다는 점이다.</p>
 <p>PostgreSQL은 테이블 및 행 수준의 잠금 기능을 사용할 수 있다.</p>
 <p><br/></p>
-<h3 id="_3">트랜잭션 격리</h3>
+<h2 id="_3">트랜잭션 격리</h2>
 <p>트랜잭션 4가지 격리 수준</p>
 <table>
 <thead>
@@ -847,6 +873,93 @@ on table_name (conditional_expression);
 <p><strong>dirty read</strong> : 커밋 되지 않은 트랜잭션이 수정한 데이터를 다른 트랜잭션이 읽는다.</p>
 <p><strong>nonrepeatable read</strong> : 한 트랜잭션 내에서 같은 쿼리를 두번 수행 할 때 그 사이에 다른 트랜잭션이 값을 수정 또는 삭제함으로써 두 쿼리의 결과가 상이하게 나타나는 비일관성이 발생하는 것을 말함</p>
 <p><strong>phantom read</strong> : 한 트랜잭션 안에서 일정 범위의 레코드를 두번 이상 읽을 때, 첫번째 쿼리에서 없던 레코드가 두번째 쿼리에서 나타나는 현상. 이는 트랜잭션 도중 새로운 레코드가 삽입되는 것을 허용하기 때문에 나타나는 현상임.</p>
+<p><br/></p>
+<h1 id="orm">ORM</h1>
+<hr />
+<h2 id="entity-framework-tutorial">Entity Framework Tutorial</h2>
+<p><br/></p>
+<p><strong>STEP 1: 테스트 용 DB 및 테이블 생성</strong></p>
+<pre><code class="sql">CREATE DATABASE testdb;
+
+CREATE TABLE public.pets
+(
+    id integer NOT NULL DEFAULT nextval('pets_id_seq'::regclass),
+    name character varying COLLATE pg_catalog.&quot;default&quot;,
+    CONSTRAINT pets_pkey PRIMARY KEY (id)
+)
+</code></pre>
+
+<p><br/>
+<strong>STEP 2: Npgsql.EntityFramework 설치</strong></p>
+<p>Nuget 패키지 관리에서 "Npgsql.EntityFramework" 검색 후 설치</p>
+<p><br/>
+<strong>STEP 3: App.config 설정</strong></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;configuration&gt;
+  &lt;configSections&gt;
+    &lt;section name=&quot;entityFramework&quot; type=&quot;System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; requirePermission=&quot;false&quot; /&gt;
+    &lt;!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 --&gt;
+  &lt;/configSections&gt;
+  &lt;system.data&gt;
+    &lt;DbProviderFactories&gt;
+      &lt;add name=&quot;Npgsql Data Provider&quot; invariant=&quot;Npgsql&quot; description=&quot;Data Provider for PostgreSQL&quot; type=&quot;Npgsql.NpgsqlFactory, Npgsql&quot; /&gt;
+    &lt;/DbProviderFactories&gt;
+  &lt;/system.data&gt;
+  &lt;connectionStrings&gt;
+    &lt;add name=&quot;MonkeyFist&quot; connectionString=&quot;server=localhost;user id=postgres;password=sams3919;database=testdb&quot; providerName=&quot;Npgsql&quot; /&gt;
+  &lt;/connectionStrings&gt;
+  &lt;entityFramework&gt;
+    &lt;defaultConnectionFactory type=&quot;System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework&quot; /&gt;
+    &lt;providers&gt;
+      &lt;provider invariantName=&quot;System.Data.SqlClient&quot; type=&quot;System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer&quot; /&gt;
+      &lt;provider invariantName=&quot;Npgsql&quot; type=&quot;Npgsql.NpgsqlServices, Npgsql.EntityFramework&quot; /&gt;
+    &lt;/providers&gt;
+  &lt;/entityFramework&gt;
+  &lt;startup&gt;
+    &lt;supportedRuntime version=&quot;v4.0&quot; sku=&quot;.NETFramework,Version=v4.5&quot; /&gt;
+  &lt;/startup&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>DBProviderFactories, DBProvider 와 Connection String 설정을 확인하면 된다.</p>
+<p><br/>
+<strong>STEP 4: 클래스 생성</strong></p>
+<pre><code class="cs">[Table(&quot;pets&quot;, Schema = &quot;public&quot;)]
+public class Pet
+{
+    [Key]
+    [Column(&quot;id&quot;)]
+    public int ID { get; set; }
+    [Column(&quot;name&quot;)]
+    public string Name { get; set; }
+}
+public class DB : DbContext
+{
+    public DB() : base(nameOrConnectionString: &quot;MonkeyFist&quot;) { }
+    public DbSet&lt;Pet&gt; Pets { get; set; }
+}
+</code></pre>
+
+<p><br/>
+<strong>STEP 5: 테스트 코드 실행</strong></p>
+<pre><code class="cs">var db = new DB();
+
+var pet = new Pet { ID = 1, Name = &quot;Stevie&quot; };
+db.Pets.Add(pet);
+db.SaveChanges();
+
+var pets = db.Pets;
+foreach (var p in pets)
+{
+    Console.WriteLine(p.Name);
+}
+Console.Read();
+</code></pre>
+
+<p><br>
+실행결과</p>
+<pre><code>Stevie
+</code></pre>
               
             </div>
           </div>
