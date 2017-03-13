@@ -78,6 +78,8 @@
                 
                     <li><a class="toctree-l4" href="#_3">네임 스페이스 명명</a></li>
                 
+                    <li><a class="toctree-l4" href="#_4">클래스, 구조체, 인터페이스 명명</a></li>
+                
             
             </ul>
         
@@ -109,6 +111,13 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../wixtool/">WIX Tool</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../ddd/">Domain Driven Design</a>
         
     </li>
 
@@ -398,6 +407,16 @@ ex) SHSystem.Controls.dll
 
 <p><br/></p>
 <h2 id="_3">네임 스페이스 명명</h2>
+<pre><code>&lt;Company&gt;.(&lt;Product&gt;|&lt;Technology&gt;)[.&lt;Feature&gt;][.&lt;Subnamespace&gt;]
+</code></pre>
+
+<p><strong>네임스페이스 각 계층에는 Pascal Case 를 사용 한다. (e.g., Microsoft.Office.PowerPoint)</strong></p>
+<p><strong>네임스페이스와 네임스페이스 내의 타입에 같은 이름을 사용하지 마라. 예를 들면 Debug 네임 스페이스의 클래스명을 Debug로 하는 경우가 이에 해당 한다.</strong></p>
+<p><strong>네임스페이스에 Element, Node, Log, Message 등과 같은 generic type을 사용하지 마라</strong></p>
+<p><br/></p>
+<h2 id="_4">클래스, 구조체, 인터페이스 명명</h2>
+<p><strong>클래스 및 구조체는 Pascal Case를 사용하며, 명사 또는 명사구로 명명 한다.</strong></p>
+<p><strong>인터페이스 명칭은 형용사로 하거나, 명사나 명사구를 거의 사용되어서는 안된다. 명사나 명사구는 추상클래스여야 한다.</strong></p>
               
             </div>
           </div>

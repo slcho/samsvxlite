@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-03-09</lastmod>
+     <lastmod>2017-03-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,7 +13,7 @@
         
     <url>
      <loc>/style/</loc>
-     <lastmod>2017-03-09</lastmod>
+     <lastmod>2017-03-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -23,19 +23,25 @@
         
     <url>
      <loc>/postgresql/</loc>
-     <lastmod>2017-03-09</lastmod>
+     <lastmod>2017-03-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/rabbitmq/</loc>
-     <lastmod>2017-03-09</lastmod>
+     <lastmod>2017-03-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/wixtool/</loc>
-     <lastmod>2017-03-09</lastmod>
+     <lastmod>2017-03-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/ddd/</loc>
+     <lastmod>2017-03-12</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
